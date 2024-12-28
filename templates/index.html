@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GPA Predictor</title>
+</head>
+<body>
+    <h1>Predict Your GPA</h1>
+    <form action="/predict" method="post">
+        <label>Study Hours Per Day:</label>
+        <input type="number" name="study_hours" step="0.1" required><br>
+        <label>Extracurricular Hours Per Day:</label>
+        <input type="number" name="extracurricular_hours" step="0.1" required><br>
+        <label>Sleep Hours Per Day:</label>
+        <input type="number" name="sleep_hours" step="0.1" required><br>
+        <label>Social Hours Per Day:</label>
+        <input type="number" name="social_hours" step="0.1" required><br>
+        <label>Physical Activity Hours Per Day:</label>
+        <input type="number" name="physical_activity" step="0.1" required><br>
+        <button type="submit">Predict GPA</button>
+    </form>
+</body>
+</html>
