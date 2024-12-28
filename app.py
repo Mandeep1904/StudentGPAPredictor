@@ -3,8 +3,9 @@ import pickle
 
 app = Flask(__name__)
 
-# Load the model
+# Load the model and classification function
 model = pickle.load(open("model.pkl", "rb"))
+classify_gpa = pickle.load(open("classify_gpa.pkl", "rb"))
 
 @app.route("/")
 def index():
@@ -22,7 +23,14 @@ def predict():
     ]
     # Predict GPA
     prediction = model.predict([inputs])[0]
-    return jsonify(gpa=round(prediction, 2))
+    
+    # Classify GPA
+    gpa_classification = classify_gpa(prediction)
+
+    return jsonify({
+        "gpa": round(prediction, 2),
+        "classification": gpa_classification
+    })
 
 if __name__ == "__main__":
     app.run(debug=True)
