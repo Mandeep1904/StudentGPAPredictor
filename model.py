@@ -30,6 +30,6 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 print("MSE:", mean_squared_error(y_test, y_pred))
 
-# Save model
-pickle.dump(model, open("model.pkl", "wb"))
-print("Model saved as model.pkl")
+# Save the model
+with open('model.pkl', 'wb') as file:
+    pickle.dump(model, file)
