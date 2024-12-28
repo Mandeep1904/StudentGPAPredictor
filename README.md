@@ -1,3 +1,5 @@
+### Student GPA Prediction
+---
 ## About Dataset used
 This dataset provides a detailed view of student lifestyle patterns and their correlation with academic performance, 
 represented by GPA. It contains 2,000 records of students' daily habits across study, extracurriculars, sleep, socializing, and physical activities. 
@@ -8,4 +10,4 @@ This data can support analyses in education, psychology, and health research fie
 making it ideal for projects on lifestyle management, 
 academic performance prediction, and well-being assessments
 
-[Kaggle link : ]("https://www.kaggle.com/datasets/steve1215rogg/student-lifestyle-dataset")
+[Kaggle link]('https://www.kaggle.com/datasets/steve1215rogg/student-lifestyle-dataset')
