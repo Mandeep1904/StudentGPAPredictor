@@ -3,9 +3,17 @@ import pickle
 
 app = Flask(__name__)
 
-# Load the model and classification function
+# Load the model
 model = pickle.load(open("model.pkl", "rb"))
-classify_gpa = pickle.load(open("classify_gpa.pkl", "rb"))
+
+# Function to classify GPA
+def classify_gpa(gpa):
+    if gpa >= 3.5:
+        return "High"
+    elif gpa >= 2.5:
+        return "Moderate"
+    else:
+        return "Low"
 
 @app.route("/")
 def index():
@@ -21,16 +29,14 @@ def predict():
         float(request.form["social_hours"]),
         float(request.form["physical_activity"]),
     ]
+    
     # Predict GPA
     prediction = model.predict([inputs])[0]
     
-    # Classify GPA
-    gpa_classification = classify_gpa(prediction)
+    # Classify the GPA
+    gpa_class = classify_gpa(prediction)
 
-    return jsonify({
-        "gpa": round(prediction, 2),
-        "classification": gpa_classification
-    })
+    return jsonify(gpa=round(prediction, 2), gpa_class=gpa_class)
 
 if __name__ == "__main__":
     app.run(debug=True)

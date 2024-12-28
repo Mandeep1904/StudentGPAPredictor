@@ -8,13 +8,15 @@ import pickle
 data = pd.read_csv("student_lifestyle_dataset.csv")
 
 # Features and target
-X = data[[
-    "Study_Hours_Per_Day",
-    "Extracurricular_Hours_Per_Day",
-    "Sleep_Hours_Per_Day",
-    "Social_Hours_Per_Day",
-    "Physical_Activity_Hours_Per_Day",
-]]
+X = data[
+    [
+        "Study_Hours_Per_Day",
+        "Extracurricular_Hours_Per_Day",
+        "Sleep_Hours_Per_Day",
+        "Social_Hours_Per_Day",
+        "Physical_Activity_Hours_Per_Day",
+    ]
+]
 y = data["GPA"]
 
 # Split data
@@ -32,15 +34,15 @@ print("MSE:", mean_squared_error(y_test, y_pred))
 with open('model.pkl', 'wb') as file:
     pickle.dump(model, file)
 
-# Function to classify GPA
+# Create the GPA classifier
 def classify_gpa(gpa):
     if gpa >= 3.5:
-        return "High"
+        return 'High'
     elif gpa >= 2.5:
-        return "Moderate"
+        return 'Moderate'
     else:
-        return "Low"
+        return 'Low'
 
-# Save the classify function
+# Save the GPA classifier
 with open('classify_gpa.pkl', 'wb') as file:
     pickle.dump(classify_gpa, file)

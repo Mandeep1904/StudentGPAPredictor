@@ -66,7 +66,7 @@
     <div id="resultSection" class="hidden bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
         <h1 class="text-2xl font-bold text-center text-gray-800 mb-4">Your Predicted GPA</h1>
         <p class="text-center text-lg text-gray-700 mb-4">The predicted GPA is: <b id="gpaValue" class="text-purple-600"></b></p>
-        <p class="text-center text-lg text-gray-700 mb-4">GPA Classification: <b id="gpaClassification" class="text-purple-600"></b></p>
+        <p class="text-center text-lg text-gray-700 mb-4">GPA Classification: <b id="gpaClass" class="text-purple-600"></b></p>
         <button 
             id="resetButton" 
             class="w-full bg-gray-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
@@ -82,20 +82,20 @@
                 body: formData
             });
             const data = await response.json();
-
+    
             // Display the result
             document.getElementById('gpaValue').textContent = data.gpa;
-            document.getElementById('gpaClassification').textContent = data.classification;
+            document.getElementById('gpaClass').textContent = data.gpa_class;
             document.getElementById('resultSection').classList.remove('hidden');
             form.classList.add('hidden');
         });
-
+    
         document.getElementById('resetButton').addEventListener('click', () => {
             // Reset the form and hide the result
             document.getElementById('gpaForm').classList.remove('hidden');
             document.getElementById('resultSection').classList.add('hidden');
             document.getElementById('gpaForm').reset();
         });
-    </script>
+    </script>    
 </body>
 </html>
