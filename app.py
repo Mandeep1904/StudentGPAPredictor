@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 import pickle
 
 app = Flask(__name__)
@@ -22,7 +22,7 @@ def predict():
     ]
     # Predict GPA
     prediction = model.predict([inputs])[0]
-    return render_template("result.html", gpa=round(prediction, 2))
+    return jsonify(gpa=round(prediction, 2))
 
 if __name__ == "__main__":
     app.run(debug=True)
